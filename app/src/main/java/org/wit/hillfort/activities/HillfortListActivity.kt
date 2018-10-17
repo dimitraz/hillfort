@@ -1,5 +1,6 @@
 package org.wit.hillfort.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -22,8 +23,14 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
   }
 
-  // add listener for when a hillfort card is pressed
+  // Add listener for when a hillfort card is pressed
   override fun onHillfortClick(hillfort: HillfortModel) {
     startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
+  }
+
+  // Refresh the list when something changes
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    recyclerView.adapter?.notifyDataSetChanged()
+    super.onActivityResult(requestCode, resultCode, data)
   }
 }
