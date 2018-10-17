@@ -1,3 +1,5 @@
 package org.wit.hillfort.models
 
-data class HillfortModel(var name: String = "", var description: String = "")
+data class HillfortModel(var id: Long = 0,
+                         var name: String = "",
+                         var description: String = "")
