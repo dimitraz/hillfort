@@ -28,10 +28,12 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
       itemView.hillfortName.text = hillfort.name
       itemView.hillfortDescription.text = hillfort.description
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
+      itemView.setOnLongClickListener { listener.onHillfortLongClick(hillfort) }
     }
   }
 }
 
 interface HillfortListener {
   fun onHillfortClick(hillfort: HillfortModel)
+  fun onHillfortLongClick(hillfort: HillfortModel): Boolean
 }

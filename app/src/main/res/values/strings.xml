@@ -2,5 +2,13 @@
   <string name="app_name">Hillfort</string>
   <string name="button_saveHillfort">Save Hillfort</string>
   <string name="name_error">Please enter a valid title</string>
+
+  <string name="title">Delete Hillfort</string>
+  <string name="message">Do you really want to delete this hillfort?</string>
+  <string name="ok">Delete</string>
+  <string name="cancel">Cancel</string>
+
+  <string name="menu_deleteHillfort">Delete</string>
+  <string name="menu_cancelHillfort">Cancel</string>
 </resources>
 

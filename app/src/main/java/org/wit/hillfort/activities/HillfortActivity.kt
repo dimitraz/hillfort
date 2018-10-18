@@ -1,9 +1,12 @@
 package org.wit.hillfort.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
@@ -17,6 +20,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort)
+    toolbarAdd.title = title
+    setSupportActionBar(toolbarAdd)
     app = application as MainApp
 
     // Check if a hillfort has been passed in to be modified
@@ -44,5 +49,34 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     }
 
     info("Hillfort: $hillfort")
+  }
+
+  // Inflate the menu
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_hillfort, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  // Menu item selected
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      R.id.item_cancel -> {
+        finish()
+      }
+      R.id.item_delete -> {
+        alert(R.string.message, R.string.title) {
+          positiveButton(R.string.ok) {
+            app.hillforts.delete(hillfort)
+            info("$hillfort deleted")
+            finish()
+          }
+          negativeButton(R.string.cancel) { dialog ->
+            dialog.dismiss()
+          }
+          show()
+        }
+      }
+    }
+    return super.onOptionsItemSelected(item)
   }
 }
