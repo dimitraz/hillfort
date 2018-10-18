@@ -19,8 +19,16 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+    buildTypes.each {
+      it.buildConfigField 'String', 'GOOGLE_API_KEY' , "$System.env.GOOGLE_API_KEY"
+    }
+  }
+  lintOptions{
+    abortOnError false
+    disable 'MissingTranslation'
   }
 }
+
 
 androidExtensions {
   experimental = true
