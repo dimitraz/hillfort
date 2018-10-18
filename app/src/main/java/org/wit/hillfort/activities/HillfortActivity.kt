@@ -1,21 +1,23 @@
 package org.wit.hillfort.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import org.wit.hillfort.R
+import org.wit.hillfort.helpers.readImage
+import org.wit.hillfort.helpers.readImageFromPath
+import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var hillfort = HillfortModel()
+  val IMAGE_REQUEST = 1
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -27,8 +29,19 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // Check if a hillfort has been passed in to be modified
     if (intent.hasExtra("hillfort_edit")) {
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
+
+      if (hillfort.image.isNotEmpty()) {
+        chooseImage.setText(R.string.button_changeImagee)
+      }
+
       hillfortName.setText(hillfort.name)
       hillfortDescription.setText(hillfort.description)
+      hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+    }
+
+    // Add listener for choose image button
+    chooseImage.setOnClickListener {
+      showImagePicker(this, IMAGE_REQUEST)
     }
 
     // Add listener for save button
@@ -67,7 +80,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         alert(R.string.message, R.string.title) {
           positiveButton(R.string.ok) {
             app.hillforts.delete(hillfort)
-            info("$hillfort deleted")
+            debug("$hillfort deleted")
             finish()
           }
           negativeButton(R.string.cancel) { dialog ->
@@ -78,5 +91,18 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       }
     }
     return super.onOptionsItemSelected(item)
+  }
+
+  // Recover image when picker activity finishes
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    when (requestCode) {
+      IMAGE_REQUEST -> {
+        if (data != null) {
+          hillfort.image = data.getData().toString()
+          hillfortImage.setImageBitmap(readImage(this, resultCode, data))
+        }
+      }
+    }
   }
 }
