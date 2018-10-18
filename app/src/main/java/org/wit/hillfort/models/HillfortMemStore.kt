@@ -18,6 +18,7 @@ class HillfortMemStore: HillfortStore, AnkoLogger {
 
   override fun create(hillfort: HillfortModel) {
     hillfort.id = getId()
+    hillfort.location = Location(52.245696, -7.139102, 15f)
     hillforts.add(hillfort)
   }
 
@@ -28,6 +29,7 @@ class HillfortMemStore: HillfortStore, AnkoLogger {
       foundHillfort.name = hillfort.name
       foundHillfort.description = hillfort.description
       foundHillfort.image = hillfort.image
+      foundHillfort.location = hillfort.location
     }
   }
 

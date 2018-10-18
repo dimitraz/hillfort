@@ -13,11 +13,13 @@ import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.Location
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var hillfort = HillfortModel()
   val IMAGE_REQUEST = 1
+  val LOCATION_REQUEST = 2
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -42,6 +44,11 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // Add listener for choose image button
     chooseImage.setOnClickListener {
       showImagePicker(this, IMAGE_REQUEST)
+    }
+
+    // Add listener for choose location button
+    chooseLocation.setOnClickListener {
+      startActivityForResult(intentFor<MapsActivity>().putExtra("location", hillfort.location), LOCATION_REQUEST)
     }
 
     // Add listener for save button
@@ -93,14 +100,21 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     return super.onOptionsItemSelected(item)
   }
 
-  // Recover image when picker activity finishes
+  // Activity lifecycle event, called when an activity finishes
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
     when (requestCode) {
+      // Recover image when picker activity finishes
       IMAGE_REQUEST -> {
         if (data != null) {
           hillfort.image = data.getData().toString()
           hillfortImage.setImageBitmap(readImage(this, resultCode, data))
+        }
+      }
+    // Recover location when map activity finishes
+      LOCATION_REQUEST -> {
+        if (data != null) {
+          hillfort.location = data.extras.getParcelable<Location>("location")
         }
       }
     }
