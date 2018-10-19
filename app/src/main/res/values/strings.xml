@@ -20,5 +20,8 @@
 
   <string name="button_location">Set Location</string>
   <string name="title_activity_maps">Map</string>
+
+  <!-- Splash Screen -->
+  <string name="loader_text">Hillfort</string>
 </resources>
 
