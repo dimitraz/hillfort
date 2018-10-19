@@ -20,7 +20,18 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
+    loadHillforts()
+  }
+
+  // Load hillforts
+  private fun loadHillforts() {
+    showHillforts(app.hillforts.findAll())
+  }
+
+  // Show hillforts in recyler view
+  fun showHillforts (hillforts: List<HillfortModel>) {
+    recyclerView.adapter = HillfortAdapter(hillforts, this)
+    recyclerView.adapter?.notifyDataSetChanged()
   }
 
   // Add listener for when a hillfort card is pressed
@@ -51,7 +62,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
 
   // Refresh the list when something changes
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    recyclerView.adapter?.notifyDataSetChanged()
+    loadHillforts()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }

@@ -14,9 +14,5 @@ class MainApp : Application(), AnkoLogger {
     super.onCreate()
     hillforts = HillfortJsonStore(applicationContext)
     info("Hillfort started")
-
-    hillforts.create(HillfortModel(name = "One", description = "About one..."))
-    hillforts.create(HillfortModel(name = "Two", description = "About two..."))
-    hillforts.create(HillfortModel(name = "Three", description = "About three..."))
   }
 }
