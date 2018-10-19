@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import org.wit.hillfort.R
 import java.io.IOException
 
@@ -25,7 +26,7 @@ fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     try {
       bitmap = MediaStore.Images.Media.getBitmap(activity.contentResolver, data.data)
     } catch (e: IOException) {
-      e.printStackTrace()
+      Log.e("Error: ", "Cannot read image: " + e.toString());
     }
   }
   return bitmap
@@ -41,7 +42,7 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
       bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
       parcelFileDescriptor.close()
     } catch (e: Exception) {
-      e.printStackTrace()
+      Log.e("Error: ", "Cannot read image from path: " + e.toString());
     }
   }
   return bitmap
