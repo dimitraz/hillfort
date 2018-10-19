@@ -18,6 +18,7 @@ import org.wit.hillfort.models.Location
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var hillfort = HillfortModel()
+  var edit = false
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
 
@@ -30,6 +31,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     // Check if a hillfort has been passed in to be modified
     if (intent.hasExtra("hillfort_edit")) {
+      edit = true
+      btnCreate.setText(R.string.button_saveHillfort)
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
 
       if (hillfort.image.isNotEmpty()) {
@@ -51,15 +54,20 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       startActivityForResult(intentFor<MapsActivity>().putExtra("location", hillfort.location), LOCATION_REQUEST)
     }
 
-    // Add listener for save button
-    btnSave.setOnClickListener {
+    // Add listener for create button
+    btnCreate.setOnClickListener {
       hillfort.name = hillfortName.text.toString()
       hillfort.description = hillfortDescription.text.toString()
 
-      // Update the hillfort object
+      // Update or create the hillfort object
       if (hillfort.name.isNotEmpty()) {
-        app.hillforts.update(hillfort.copy())
-        app.hillforts.logAll()
+        if (edit) {
+          app.hillforts.update(hillfort.copy())
+          app.hillforts.logAll()
+        } else {
+          app.hillforts.create(hillfort.copy())
+          app.hillforts.logAll()
+        }
 
         setResult(AppCompatActivity.RESULT_OK)
         finish()
