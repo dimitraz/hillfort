@@ -2,6 +2,7 @@ package org.wit.hillfort.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -27,6 +28,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     setContentView(R.layout.activity_hillfort)
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
     app = application as MainApp
 
     // Check if a hillfort has been passed in to be modified
