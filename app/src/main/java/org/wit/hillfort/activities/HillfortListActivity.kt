@@ -9,6 +9,8 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
+import org.wit.hillfort.adapters.HillfortAdapter
+import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 

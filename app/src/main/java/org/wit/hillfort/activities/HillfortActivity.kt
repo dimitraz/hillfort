@@ -1,16 +1,16 @@
 package org.wit.hillfort.activities
 
+
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.NavUtils
+import android.support.v4.view.PagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.readImage
-import org.wit.hillfort.helpers.readImageFromPath
+import org.wit.hillfort.adapters.SliderAdapter
 import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
@@ -18,6 +18,7 @@ import org.wit.hillfort.models.Location
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
+  lateinit var adapter: PagerAdapter
   var hillfort = HillfortModel()
   var edit = false
   val IMAGE_REQUEST = 1
@@ -37,14 +38,16 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       btnCreate.setText(R.string.button_saveHillfort)
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
 
-      if (hillfort.image.isNotEmpty()) {
+      if (hillfort.images.isNotEmpty()) {
         chooseImage.setText(R.string.button_changeImagee)
       }
 
       hillfortName.setText(hillfort.name)
       hillfortDescription.setText(hillfort.description)
-      hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
     }
+
+    // Load the list of images in a pager view
+    loadImages()
 
     // Add listener for choose image button
     chooseImage.setOnClickListener {
@@ -70,15 +73,12 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
           app.hillforts.create(hillfort.copy())
           app.hillforts.logAll()
         }
-
         setResult(AppCompatActivity.RESULT_OK)
         finish()
       } else {
         toast(R.string.name_error)
       }
     }
-
-    info("Hillfort: $hillfort")
   }
 
   // Inflate the menu
@@ -110,6 +110,17 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     return super.onOptionsItemSelected(item)
   }
 
+  // Load hillfort images
+  private fun loadImages() {
+    showImages(hillfort.images)
+  }
+
+  // Show images in pager view
+  fun showImages(images: MutableList<String>) {
+    pager.adapter = SliderAdapter(applicationContext, images)
+    pager.adapter?.notifyDataSetChanged()
+  }
+
   // Activity lifecycle event, called when an activity finishes
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
@@ -117,11 +128,27 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       // Recover image when picker activity finishes
       IMAGE_REQUEST -> {
         if (data != null) {
-          hillfort.image = data.getData().toString()
-          hillfortImage.setImageBitmap(readImage(this, resultCode, data))
+          val clipData = data.clipData
+
+          // Handle multiple photos
+          if (clipData != null) {
+            hillfort.images.clear()
+            for (i in 0 until clipData.itemCount) {
+              val uri = clipData.getItemAt(i).uri.toString()
+              hillfort.images.add(uri)
+            }
+            loadImages()
+          }
+          // Handle single photo
+          else {
+            val uri = data?.data.toString()
+            hillfort.images.clear()
+            hillfort.images.add(uri)
+            loadImages()
+          }
         }
       }
-    // Recover location when map activity finishes
+      // Recover location when map activity finishes
       LOCATION_REQUEST -> {
         if (data != null) {
           hillfort.location = data.extras.getParcelable<Location>("location")

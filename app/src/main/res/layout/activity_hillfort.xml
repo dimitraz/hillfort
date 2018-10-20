@@ -64,6 +64,11 @@
           android:textColor="@color/colorPrimaryDark"
           android:textSize="14sp"/>
 
+        <android.support.v4.view.ViewPager
+          android:id="@+id/pager"
+          android:layout_width="match_parent"
+          android:layout_height="125dp" />
+
         <Button
           android:id="@+id/chooseImage"
           android:layout_width="match_parent"
@@ -75,12 +80,6 @@
           android:text="@string/button_addImage"
           android:textColor="@color/colorPrimary"
           android:textSize="16sp"/>
-
-        <ImageView
-          android:id="@+id/hillfortImage"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:srcCompat="@mipmap/ic_launcher"/>
 
         <Button
           android:id="@+id/chooseLocation"
