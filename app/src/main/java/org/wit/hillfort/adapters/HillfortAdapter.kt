@@ -1,12 +1,12 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
 
 class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
@@ -27,10 +27,13 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
     fun bind(hillfort: HillfortModel, listener: HillfortListener) {
       itemView.hillfortName.text = hillfort.name
       itemView.hillfortDescription.text = hillfort.description
-      itemView.hillfortIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
-
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
       itemView.setOnLongClickListener { listener.onHillfortLongClick(hillfort) }
+
+      if (hillfort.images.isNotEmpty()) {
+        Picasso.get().load(hillfort.images.get(0))
+            .resize(100, 100).centerCrop().into(itemView.hillfortIcon)
+      }
     }
   }
 }

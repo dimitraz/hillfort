@@ -28,20 +28,16 @@ class HillfortMemStore: HillfortStore, AnkoLogger {
     if (foundHillfort != null) {
       foundHillfort.name = hillfort.name
       foundHillfort.description = hillfort.description
-      foundHillfort.image = hillfort.image
+      foundHillfort.images = hillfort.images
       foundHillfort.location = hillfort.location
     }
   }
 
   override fun delete(hillfort: HillfortModel) {
-    var foundHillfort: HillfortModel? = hillforts.find { h -> h.id == hillfort.id }
-
-    if (foundHillfort != null) {
-      hillforts.remove(hillfort)
-    }
+    hillforts.remove(hillfort)
   }
 
-  fun logAll() {
+  override fun logAll() {
     hillforts.forEach { info("$it") }
   }
 }

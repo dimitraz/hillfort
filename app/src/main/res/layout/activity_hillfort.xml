@@ -38,31 +38,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <android.support.v4.view.ViewPager
+          android:id="@+id/pager"
+          android:layout_width="match_parent"
+          android:layout_height="220dp" />
+
         <android.support.design.widget.TextInputEditText
           android:id="@+id/hillfortName"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_margin="8dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="8dp"
           android:hint=""
           android:inputType="text"
           android:maxLength="25"
           android:maxLines="1"
-          android:padding="8dp"
+          android:paddingVertical="15dp"
           android:textColor="@color/colorPrimaryDark"
-          android:textSize="14sp"/>
+          android:textSize="16sp" />
 
         <android.support.design.widget.TextInputEditText
           android:id="@+id/hillfortDescription"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_margin="8dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginBottom="8dp"
           android:hint=""
           android:inputType="text"
           android:maxLength="25"
           android:maxLines="1"
-          android:padding="8dp"
+          android:paddingVertical="15dp"
           android:textColor="@color/colorPrimaryDark"
-          android:textSize="14sp"/>
+          android:textSize="16sp" />
 
         <Button
           android:id="@+id/chooseImage"
@@ -74,13 +83,7 @@
           android:paddingTop="8dp"
           android:text="@string/button_addImage"
           android:textColor="@color/colorPrimary"
-          android:textSize="16sp"/>
-
-        <ImageView
-          android:id="@+id/hillfortImage"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:srcCompat="@mipmap/ic_launcher"/>
+          android:textSize="16sp" />
 
         <Button
           android:id="@+id/chooseLocation"
@@ -93,10 +96,10 @@
           android:stateListAnimator="@null"
           android:text="@string/button_location"
           android:textColor="@color/colorPrimary"
-          android:textSize="16sp"/>
+          android:textSize="16sp" />
 
         <Button
-          android:id="@+id/btnSave"
+          android:id="@+id/btnCreate"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_margin="16dp"
@@ -104,9 +107,9 @@
           android:paddingBottom="8dp"
           android:paddingTop="8dp"
           android:stateListAnimator="@null"
-          android:text="@string/button_saveHillfort"
+          android:text="@string/button_createHillfort"
           android:textColor="@color/colorPrimary"
-          android:textSize="16sp"/>
+          android:textSize="16sp" />
       </LinearLayout>
     </ScrollView>
 

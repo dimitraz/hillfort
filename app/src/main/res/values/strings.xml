@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">Hillfort</string>
   <string name="button_saveHillfort">Save Hillfort</string>
+  <string name="button_createHillfort">Add Hillfort</string>
   <string name="name_error">Please enter a valid title</string>
 
   <string name="title">Delete Hillfort</string>
@@ -10,6 +11,8 @@
 
   <string name="menu_deleteHillfort">Delete</string>
   <string name="menu_cancelHillfort">Cancel</string>
+  <string name="menu_createHillfort">Create</string>
+
 
   <string name="button_addImage">Add Image</string>
   <string name="button_changeImagee">Change Image</string>
@@ -17,5 +20,8 @@
 
   <string name="button_location">Set Location</string>
   <string name="title_activity_maps">Map</string>
+
+  <!-- Splash Screen -->
+  <string name="loader_text">Hillfort</string>
 </resources>
 
