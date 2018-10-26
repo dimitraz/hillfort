@@ -21,7 +21,7 @@
       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
       <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarLogin"
+        android:id="@+id/toolbarSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleTextColor="@color/colorPrimary" />
@@ -37,15 +37,44 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingHorizontal="10dp">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/userName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="60dp"
+          android:hint="Name"
+          android:inputType="text"
+          android:maxLength="25"
+          android:maxLines="1"
+          android:paddingVertical="15dp"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="16sp" />
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/userSurname"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:hint="Last Name"
+          android:inputType="text"
+          android:maxLength="25"
+          android:maxLines="1"
+          android:paddingVertical="15dp"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="16sp" />
 
         <android.support.design.widget.TextInputEditText
           android:id="@+id/userEmail"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginHorizontal="8dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
           android:hint="Email Address"
           android:inputType="textEmailAddress"
           android:maxLength="25"
@@ -59,7 +88,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="8dp"
-          android:layout_marginHorizontal="8dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
           android:hint="Password"
           android:inputType="textPassword"
           android:maxLength="25"
@@ -69,7 +99,7 @@
           android:textSize="16sp" />
 
         <Button
-          android:id="@+id/btnLogin"
+          android:id="@+id/btnSignup"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_margin="16dp"
@@ -77,12 +107,41 @@
           android:paddingBottom="8dp"
           android:paddingTop="8dp"
           android:stateListAnimator="@null"
-          android:text="@string/button_login"
+          android:text="@string/button_signup"
           android:textColor="@color/colorPrimary"
           android:textSize="16sp" />
       </LinearLayout>
-
     </ScrollView>
+
+    <!--<LinearLayout-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:layout_alignParentBottom="true"-->
+      <!--android:orientation="vertical">-->
+
+      <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="28dp"-->
+        <!--android:text="@string/text_signupPrompt"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textSize="14sp"-->
+        <!--tools:text="Already a user? Log in instead" />-->
+
+      <!--<Button-->
+        <!--android:id="@+id/btnSignup"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="16dp"-->
+        <!--android:background="@color/colorAccent"-->
+        <!--android:paddingBottom="8dp"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:stateListAnimator="@null"-->
+        <!--android:text="@string/button_signup"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="16sp" />-->
+    <!--</LinearLayout>-->
 
   </RelativeLayout>
 

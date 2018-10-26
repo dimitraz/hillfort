@@ -24,8 +24,13 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".activities.SignupActivity"></activity>
-    <activity android:name=".activities.LoginActivity"></activity>
+    <activity
+      android:name=".activities.LandingActivity"></activity>
+    <activity
+      android:name=".activities.SignupActivity"
+      android:parentActivityName=".activities.LandingActivity"></activity>
+    <activity android:name=".activities.LoginActivity"
+      android:parentActivityName=".activities.LandingActivity"></activity>
     <activity android:name=".activities.HillfortListActivity"></activity>
     <activity
       android:name=".activities.HillfortActivity"

@@ -25,8 +25,7 @@
   <!-- Splash Screen -->
   <string name="loader_text">Hillfort</string>
 
-  <!-- Login Screen -->
-  <string name="text_signupPrompt">Not a user?</string>
+  <!-- Landing Screen -->
   <string name="button_signup">Sign up</string>
   <string name="button_login">Log in</string>
 </resources>

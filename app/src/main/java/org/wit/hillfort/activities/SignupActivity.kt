@@ -3,16 +3,15 @@ package org.wit.hillfort.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.intentFor
+import kotlinx.android.synthetic.main.activity_signup.*
 import org.wit.hillfort.R
 
-class LoginActivity: AppCompatActivity() {
+class SignupActivity: AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_login)
-    toolbarLogin.title = title
-    setSupportActionBar(toolbarLogin)
+    setContentView(R.layout.activity_signup)
+    toolbarSignup.title = title
+    setSupportActionBar(toolbarSignup)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
