@@ -28,5 +28,9 @@
   <!-- Landing Screen -->
   <string name="button_signup">Sign up</string>
   <string name="button_login">Log in</string>
+
+  <!-- Sign up page -->
+  <string name="text_invalidSignup">Please enter valid profile information</string>
+  <string name="text_userExists">Email address is already in use</string>
 </resources>
 

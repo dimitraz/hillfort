@@ -58,6 +58,15 @@ class UserJsonStore: UserStore, AnkoLogger {
     serialize()
   }
 
+  override fun userExists(email: String): Boolean {
+    var foundUser: UserModel? = users.find { h -> h.email == email }
+    return if (foundUser != null) {
+      true
+    } else {
+      return false
+    }
+  }
+
   override fun logAll() {
     users.forEach { info("$it") }
   }

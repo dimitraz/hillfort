@@ -27,6 +27,8 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadHillforts()
+
+    info(app.currentUser)
   }
 
   // Inflate the menu
