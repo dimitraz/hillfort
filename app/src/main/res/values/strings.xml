@@ -9,11 +9,6 @@
   <string name="ok">Delete</string>
   <string name="cancel">Cancel</string>
 
-  <string name="menu_deleteHillfort">Delete</string>
-  <string name="menu_cancelHillfort">Cancel</string>
-  <string name="menu_createHillfort">Create</string>
-
-
   <string name="button_addImage">Add Image</string>
   <string name="button_changeImagee">Change Image</string>
   <string name="select_image">Select Image</string>
@@ -21,7 +16,18 @@
   <string name="button_location">Set Location</string>
   <string name="title_activity_maps">Map</string>
 
+  <!-- Menus -->
+  <string name="menu_deleteHillfort">Delete</string>
+  <string name="menu_cancelHillfort">Cancel</string>
+  <string name="menu_createHillfort">Create</string>
+  <string name="menu_logo">Hillfort</string>
+
   <!-- Splash Screen -->
   <string name="loader_text">Hillfort</string>
+
+  <!-- Login Screen -->
+  <string name="text_signupPrompt">Not a user?</string>
+  <string name="button_signup">Sign up</string>
+  <string name="button_login">Log in</string>
 </resources>
 
