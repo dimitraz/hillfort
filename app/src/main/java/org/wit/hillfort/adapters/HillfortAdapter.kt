@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.hillfort.R
-import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.hillfort.HillfortModel
 
 class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
                                   private val listener: HillfortListener) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {

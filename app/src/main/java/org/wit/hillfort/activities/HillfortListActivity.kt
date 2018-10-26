@@ -12,7 +12,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.adapters.HillfortAdapter
 import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.main.MainApp
-import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.hillfort.HillfortModel
 
 class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
   lateinit var app: MainApp

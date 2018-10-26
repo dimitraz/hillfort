@@ -1,4 +1,4 @@
-package org.wit.hillfort.models
+package org.wit.hillfort.models.hillfort
 
 interface HillfortStore {
   fun findAll(): List<HillfortModel>

@@ -13,8 +13,8 @@ import org.wit.hillfort.R
 import org.wit.hillfort.adapters.SliderAdapter
 import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
-import org.wit.hillfort.models.HillfortModel
-import org.wit.hillfort.models.Location
+import org.wit.hillfort.models.hillfort.HillfortModel
+import org.wit.hillfort.models.hillfort.Location
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp

@@ -1,4 +1,4 @@
-package org.wit.hillfort.models
+package org.wit.hillfort.models.hillfort
 
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info

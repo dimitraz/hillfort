@@ -1,4 +1,4 @@
-package org.wit.hillfort.models
+package org.wit.hillfort.models.hillfort
 
 import android.content.Context
 import com.google.gson.Gson
