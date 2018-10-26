@@ -32,5 +32,9 @@
   <!-- Sign up page -->
   <string name="text_invalidSignup">Please enter valid profile information</string>
   <string name="text_userExists">Email address is already in use</string>
+
+  <!-- Log in page -->
+  <string name="text_authFailed">Email or password is incorrect</string>
+
 </resources>
 

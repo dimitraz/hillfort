@@ -67,6 +67,19 @@ class UserJsonStore: UserStore, AnkoLogger {
     }
   }
 
+  override fun authenticateUser(email: String, password: String): UserModel? {
+    var foundUser: UserModel? = users.find { h -> h.email == email }
+    if (foundUser != null) {
+      if (foundUser.password == password) {
+        return foundUser
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
+
   override fun logAll() {
     users.forEach { info("$it") }
   }
