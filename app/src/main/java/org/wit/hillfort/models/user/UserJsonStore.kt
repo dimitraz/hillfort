@@ -6,12 +6,13 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.helpers.exists
 import org.wit.hillfort.helpers.read
 import org.wit.hillfort.helpers.write
 import java.util.*
 
-val JSON_FILE = "users.json"
+val JSON_FILE = "hillfort_users.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<ArrayList<UserModel>>() {}.type
 
@@ -49,7 +50,6 @@ class UserJsonStore: UserStore, AnkoLogger {
       foundUser.email = user.email
       foundUser.password = user.password
     }
-
     serialize()
   }
 
@@ -70,7 +70,7 @@ class UserJsonStore: UserStore, AnkoLogger {
   override fun authenticateUser(email: String, password: String): UserModel? {
     var foundUser: UserModel? = users.find { h -> h.email == email }
     if (foundUser != null) {
-      if (foundUser.password == password) {
+      if (BCrypt.checkpw(password, foundUser.password)) {
         return foundUser
       } else {
         return null

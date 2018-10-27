@@ -6,6 +6,7 @@ import android.view.Menu
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
@@ -33,6 +34,8 @@ class SignupActivity: AppCompatActivity() {
         if (app.users.userExists(user.email)) {
           toast(R.string.text_userExists)
         } else {
+          // Hash and salt the user's password
+          user.password = BCrypt.hashpw(user.password, BCrypt.gensalt())
           app.users.create(user)
           app.currentUser = user
           startActivityForResult(intentFor<HillfortListActivity>(), 0)
