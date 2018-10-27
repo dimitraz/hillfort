@@ -30,9 +30,10 @@ class SignupActivity: AppCompatActivity() {
       user.email = userEmail.text.toString()
       user.password = userPassword.text.toString()
 
-      if (user.name.isNotEmpty() && user.email.isNotEmpty() && user.password.isNotEmpty()) {
+      // Create the user if credentials are valid and start the app
+      if (user.name.isNotEmpty() && validateEmail(user.email) && validatePassword(user.password)) {
         if (app.users.userExists(user.email)) {
-          toast(R.string.text_userExists)
+          toast(R.string.error_userExists)
         } else {
           // Hash and salt the user's password
           user.password = BCrypt.hashpw(user.password, BCrypt.gensalt())
@@ -42,7 +43,22 @@ class SignupActivity: AppCompatActivity() {
         }
       }
       else {
-        toast(R.string.text_invalidSignup)
+        // Add an email validation error message
+        if (!validateEmail(user.email)) {
+          userEmail.error = getString(R.string.error_invalidEmail)
+        }
+
+        // Add a password validation error message
+        if (!validatePassword(user.password)) {
+          userPassword.error = getString(R.string.error_invalidPassword)
+        }
+
+        // Add a name validation error message
+        if (user.name.isEmpty()) {
+          userName.error = getString(R.string.error_invalidName)
+        }
+
+        toast(R.string.error_invalidSignup)
       }
     }
   }
@@ -51,5 +67,15 @@ class SignupActivity: AppCompatActivity() {
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_plain, menu)
     return super.onCreateOptionsMenu(menu)
+  }
+
+  // Helper function for validating email strings
+  fun validateEmail(email: String): Boolean {
+    return email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+  }
+
+  // Helper function for validating passwords
+  fun validatePassword(password: String): Boolean {
+    return password.length > 5
   }
 }

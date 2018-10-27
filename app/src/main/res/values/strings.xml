@@ -31,8 +31,11 @@
   <string name="button_login">Log in</string>
 
   <!-- Sign up page -->
-  <string name="text_invalidSignup">Please enter valid profile information</string>
-  <string name="text_userExists">Email address is already in use</string>
+  <string name="error_invalidSignup">Invalid user credentials</string>
+  <string name="error_userExists">Email address is already in use</string>
+  <string name="error_invalidEmail">This email address is invalid</string>
+  <string name="error_invalidPassword">This password is too short</string>
+  <string name="error_invalidName">Name cannot be empty</string>
 
   <!-- Log in page -->
   <string name="text_authFailed">Email or password is incorrect</string>
