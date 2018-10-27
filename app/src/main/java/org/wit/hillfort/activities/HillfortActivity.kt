@@ -44,6 +44,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
       hillfortName.setText(hillfort.name)
       hillfortDescription.setText(hillfort.description)
+      hillfortVisited.isChecked = hillfort.visited
     }
 
     // Load the list of images in a pager view
@@ -63,6 +64,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     btnCreate.setOnClickListener {
       hillfort.name = hillfortName.text.toString()
       hillfort.description = hillfortDescription.text.toString()
+      hillfort.visited = hillfortVisited.isChecked
 
       // Update or create the hillfort object
       if (hillfort.name.isNotEmpty()) {

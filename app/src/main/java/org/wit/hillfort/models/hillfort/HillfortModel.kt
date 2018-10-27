@@ -9,8 +9,9 @@ import kotlinx.android.parcel.Parcelize
 data class HillfortModel(var id: Long = 0,
                          var name: String = "",
                          var description: String = "",
-                         var images: MutableList<String> = ArrayList<String>(),
-                         var location: Location = Location()): Parcelable
+                         var images: MutableList<String> = ArrayList(),
+                         var location: Location = Location(),
+                         var visited: Boolean = false): Parcelable
 
 
 @SuppressLint("ParcelCreator")
