@@ -8,6 +8,8 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
+import org.wit.hillfort.helpers.validateEmail
+import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
@@ -67,15 +69,5 @@ class SignupActivity: AppCompatActivity() {
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_plain, menu)
     return super.onCreateOptionsMenu(menu)
-  }
-
-  // Helper function for validating email strings
-  fun validateEmail(email: String): Boolean {
-    return email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-  }
-
-  // Helper function for validating passwords
-  fun validatePassword(password: String): Boolean {
-    return password.length > 5
   }
 }

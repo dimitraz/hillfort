@@ -36,8 +36,11 @@
       android:parentActivityName=".activities.LandingActivity" />
     <activity android:name=".activities.HillfortListActivity" />
     <activity
-      android:name=".activities.SettingsActivity"
+      android:name=".activities.ProfileActivity"
       android:parentActivityName=".activities.HillfortListActivity" />
+    <activity
+      android:name=".activities.SettingsActivity"
+      android:parentActivityName=".activities.ProfileActivity" />
     <activity
       android:name=".activities.HillfortActivity"
       android:parentActivityName=".activities.HillfortListActivity" />

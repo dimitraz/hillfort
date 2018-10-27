@@ -49,6 +49,7 @@ class UserJsonStore: UserStore, AnkoLogger {
       foundUser.surname = user.surname
       foundUser.email = user.email
       foundUser.password = user.password
+      foundUser.profileImage = user.profileImage
     }
     serialize()
   }

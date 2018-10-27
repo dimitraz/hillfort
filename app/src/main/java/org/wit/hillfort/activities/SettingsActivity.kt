@@ -7,18 +7,23 @@ import android.view.Menu
 import android.view.MenuItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.toast
+import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.helpers.showImagePicker
+import org.wit.hillfort.helpers.validateEmail
+import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var user = UserModel()
-  val IMAGE_REQUEST = 1
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -29,11 +34,35 @@ class SettingsActivity : AppCompatActivity() {
     app = application as MainApp
 
     user = app.currentUser!!
-    profileName.text = "${user.name} ${user.surname}"
 
-    // Add listener for choose profile button
-    iconLayout.setOnClickListener {
-      showImagePicker(this, IMAGE_REQUEST)
+    // Prefill user credentials
+    userName.setText(user.name)
+    userSurname.setText(user.surname)
+    userEmail.setText(user.email)
+
+    // Update user credentials
+    btnSave.setOnClickListener {
+      var name = userName.text.toString()
+      var surname = userSurname.text.toString()
+      var email = userEmail.text.toString()
+      var password = userPassword.text.toString()
+
+      // Input validation
+      if (name.isNotEmpty()) { user.name = name }
+      if (surname.isNotEmpty()) { user.surname = surname }
+      if (email.isNotEmpty() && validateEmail(email)) {
+        user.email = email
+      } else {
+        toast("Invalid email")
+      }
+      if (password.isNotEmpty() && validatePassword(password)) {
+        user.password = BCrypt.hashpw(password, BCrypt.gensalt())
+      } else {
+        toast("Invalid password")
+      }
+
+      toast("Saved")
+      app.users.update(user)
     }
   }
 
@@ -52,20 +81,5 @@ class SettingsActivity : AppCompatActivity() {
       }
     }
     return super.onOptionsItemSelected(item)
-  }
-
-  // Activity lifecycle event, called when an activity finishes
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-    when (requestCode) {
-    // Recover profile when picker activity finishes
-      IMAGE_REQUEST -> {
-        if (data != null) {
-          val uri = data?.data.toString()
-          Picasso.get().load(uri)
-              .transform(CircleTransform()).into(profileIcon)
-        }
-      }
-    }
   }
 }

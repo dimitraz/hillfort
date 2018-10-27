@@ -43,8 +43,8 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
       R.id.item_add -> {
         startActivityForResult(intentFor<HillfortActivity>(), 0)
       }
-      R.id.item_settings -> {
-        startActivityForResult(intentFor<SettingsActivity>(), 0)
+      R.id.item_profile -> {
+        startActivityForResult(intentFor<ProfileActivity>(), 0)
       }
     }
     return super.onOptionsItemSelected(item)
