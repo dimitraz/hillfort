@@ -1,4 +1,4 @@
-package org.wit.hillfort.models
+package org.wit.hillfort.models.hillfort
 
 import android.content.Context
 import com.google.gson.Gson
@@ -49,6 +49,7 @@ class HillfortJsonStore: HillfortStore, AnkoLogger {
       foundHillfort.description = hillfort.description
       foundHillfort.images = hillfort.images
       foundHillfort.location = hillfort.location
+      foundHillfort.visited = hillfort.visited
     }
 
     serialize()

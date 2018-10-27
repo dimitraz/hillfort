@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
 
   internal val mRunnable: Runnable = Runnable {
     if (!isFinishing) {
-      startActivity(intentFor<HillfortListActivity>())
+      startActivity(intentFor<LandingActivity>())
       finish()
     }
   }

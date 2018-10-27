@@ -1,4 +1,4 @@
-package org.wit.hillfort.models
+package org.wit.hillfort.models.hillfort
 
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -30,6 +30,7 @@ class HillfortMemStore: HillfortStore, AnkoLogger {
       foundHillfort.description = hillfort.description
       foundHillfort.images = hillfort.images
       foundHillfort.location = hillfort.location
+      foundHillfort.visited = hillfort.visited
     }
   }
 

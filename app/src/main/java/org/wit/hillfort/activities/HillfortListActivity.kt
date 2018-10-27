@@ -12,7 +12,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.adapters.HillfortAdapter
 import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.main.MainApp
-import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.hillfort.HillfortModel
 
 class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
   lateinit var app: MainApp
@@ -27,6 +27,8 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadHillforts()
+
+    info(app.currentUser)
   }
 
   // Inflate the menu
@@ -40,6 +42,9 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
     when (item?.itemId) {
       R.id.item_add -> {
         startActivityForResult(intentFor<HillfortActivity>(), 0)
+      }
+      R.id.item_profile -> {
+        startActivityForResult(intentFor<ProfileActivity>(), 0)
       }
     }
     return super.onOptionsItemSelected(item)
