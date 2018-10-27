@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.adapters.SliderAdapter
-import org.wit.hillfort.helpers.showImagePicker
+import org.wit.hillfort.helpers.showMultiImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.hillfort.HillfortModel
 import org.wit.hillfort.models.hillfort.Location
@@ -49,12 +49,12 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // Load the list of images in a pager view
     loadImages()
 
-    // Add listener for choose image button
+    // Start the image picker activity
     chooseImage.setOnClickListener {
-      showImagePicker(this, IMAGE_REQUEST)
+      showMultiImagePicker(this, IMAGE_REQUEST)
     }
 
-    // Add listener for choose location button
+    // Start the map activity
     chooseLocation.setOnClickListener {
       startActivityForResult(intentFor<MapsActivity>().putExtra("location", hillfort.location), LOCATION_REQUEST)
     }
