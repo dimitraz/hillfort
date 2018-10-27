@@ -43,6 +43,10 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
       R.id.item_add -> {
         startActivityForResult(intentFor<HillfortActivity>(), 0)
       }
+      R.id.item_logout -> {
+        app.currentUser = null
+        startActivityForResult(intentFor<LandingActivity>(), 0)
+      }
     }
     return super.onOptionsItemSelected(item)
   }

@@ -21,6 +21,7 @@
   <string name="menu_cancelHillfort">Cancel</string>
   <string name="menu_createHillfort">Create</string>
   <string name="menu_logo">Hillfort</string>
+  <string name="menu_logout">Log out</string>
 
   <!-- Splash Screen -->
   <string name="loader_text">Hillfort</string>

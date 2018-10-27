@@ -12,7 +12,7 @@ import org.wit.hillfort.models.user.UserStore
 class MainApp : Application(), AnkoLogger {
   lateinit var hillforts: HillfortStore
   lateinit var users: UserStore
-  lateinit var currentUser: UserModel
+  var currentUser: UserModel? = null
 
   override fun onCreate() {
     super.onCreate()
