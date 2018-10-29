@@ -40,6 +40,7 @@
         <android.support.v4.view.ViewPager
           android:id="@+id/pager"
           android:layout_width="match_parent"
+          android:background="#000"
           android:layout_height="220dp" />
 
         <LinearLayout
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint=""
+            android:hint="Hillfort Name"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"
@@ -65,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint=""
+            android:hint="Description"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"

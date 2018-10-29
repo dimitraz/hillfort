@@ -17,7 +17,6 @@ import org.wit.hillfort.models.hillfort.HillfortModel
 class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
     val contentView = layoutInflater.inflate(R.layout.activity_hillfort_list, null, false)
     drawer_layout.addView(contentView, 0)
 
@@ -25,7 +24,9 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
     recyclerView.layoutManager = layoutManager
     loadHillforts()
 
-    info(app.currentUser)
+    btnCreate.setOnClickListener {
+      startActivityForResult(intentFor<HillfortActivity>(), 0)
+    }
   }
 
   // Load hillforts
@@ -42,27 +43,6 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
   // Add listener for when a hillfort card is pressed
   override fun onHillfortClick(hillfort: HillfortModel) {
     startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
-  }
-
-  // Add listener for when a hillfort card is long pressed
-  override fun onHillfortLongClick(hillfort: HillfortModel): Boolean {
-    toast("Long press detected")
-    //    alert {
-    //      titleResource = R.string.title
-    //      messageResource = R.string.message
-    //      positiveButton(R.string.ok) { dialog ->
-    //        dialog.dismiss()
-    //        app.hillforts.delete(hillfort)
-    //        toast("$hillfort deleted")
-    //      }
-    //      negativeButton(R.string.cancel) { dialog ->
-    //        dialog.dismiss()
-    //        toast("Not deleting")
-    //      }
-    //      show()
-    //    }
-    //    return true
-    return true
   }
 
   // Refresh the list when something changes

@@ -11,6 +11,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.models.hillfort.HillfortJsonStore
 import org.wit.hillfort.models.user.UserModel
 
 class SignupActivity: AppCompatActivity() {
@@ -41,6 +42,7 @@ class SignupActivity: AppCompatActivity() {
           user.password = BCrypt.hashpw(user.password, BCrypt.gensalt())
           app.users.create(user)
           app.currentUser = user
+          app.hillforts = HillfortJsonStore(applicationContext, user.id)
           startActivityForResult(intentFor<HillfortListActivity>(), 0)
         }
       }

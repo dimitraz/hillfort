@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
@@ -58,6 +59,11 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     // Load the list of images in a pager view
     loadImages()
+
+    // Hide the pager if there are no images
+    if (hillfort.images.isEmpty()) {
+      pager.visibility = View.GONE
+    }
 
     // Start the image picker activity
     chooseImage.setOnClickListener {
