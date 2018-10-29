@@ -2,11 +2,10 @@ package org.wit.hillfort.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
-import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_base.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.adapters.HillfortAdapter
@@ -14,40 +13,19 @@ import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.hillfort.HillfortModel
 
-class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
-  lateinit var app: MainApp
 
+class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_hillfort_list)
-    toolbarMain.title = title
-    setSupportActionBar(toolbarMain)
-    app = application as MainApp
+
+    val contentView = layoutInflater.inflate(R.layout.activity_hillfort_list, null, false)
+    drawer_layout.addView(contentView, 0)
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadHillforts()
 
     info(app.currentUser)
-  }
-
-  // Inflate the menu
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.menu_main, menu)
-    return super.onCreateOptionsMenu(menu)
-  }
-
-  // Menu item selected
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    when (item?.itemId) {
-      R.id.item_add -> {
-        startActivityForResult(intentFor<HillfortActivity>(), 0)
-      }
-      R.id.item_profile -> {
-        startActivityForResult(intentFor<ProfileActivity>(), 0)
-      }
-    }
-    return super.onOptionsItemSelected(item)
   }
 
   // Load hillforts
