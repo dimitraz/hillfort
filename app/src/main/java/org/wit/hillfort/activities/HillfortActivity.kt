@@ -1,7 +1,9 @@
 package org.wit.hillfort.activities
 
 
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.support.v4.view.PagerAdapter
 import android.support.v7.app.AppCompatActivity
@@ -13,8 +15,10 @@ import org.wit.hillfort.R
 import org.wit.hillfort.adapters.SliderAdapter
 import org.wit.hillfort.helpers.showMultiImagePicker
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.models.hillfort.Date
 import org.wit.hillfort.models.hillfort.HillfortModel
 import org.wit.hillfort.models.hillfort.Location
+
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
@@ -39,12 +43,16 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
 
       if (hillfort.images.isNotEmpty()) {
-        chooseImage.setText(R.string.button_changeImagee)
+        chooseImage.setText(R.string.button_changeImage)
       }
 
+      // Prefill fields
       hillfortName.setText(hillfort.name)
       hillfortDescription.setText(hillfort.description)
       hillfortVisited.isChecked = hillfort.visited
+      if (hillfort.date != null) {
+        dateVisited.text = "${hillfort.date!!.day}/${hillfort.date!!.month}/${hillfort.date!!.year}"
+      }
     }
 
     // Load the list of images in a pager view
@@ -80,6 +88,20 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       } else {
         toast(R.string.name_error)
       }
+    }
+
+    // Calendar date picker
+    val calendar = Calendar.getInstance()
+    val y = hillfort.date?.year ?: calendar.get(Calendar.YEAR)
+    val m = hillfort.date?.month ?: calendar.get(Calendar.MONTH)
+    val d = hillfort.date?.day ?: calendar.get(Calendar.DAY_OF_MONTH)
+
+    chooseDate.setOnClickListener {
+      val dialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+        dateVisited.text = "$day/$month/$year"
+        hillfort.date = Date(day, month, year)
+      }, y, m, d)
+      dialog.show()
     }
   }
 
@@ -127,7 +149,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
     when (requestCode) {
-      // Recover image when picker activity finishes
+    // Recover image when picker activity finishes
       IMAGE_REQUEST -> {
         if (data != null) {
           val clipData = data.clipData
@@ -150,7 +172,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
           }
         }
       }
-      // Recover location when map activity finishes
+    // Recover location when map activity finishes
       LOCATION_REQUEST -> {
         if (data != null) {
           hillfort.location = data.extras.getParcelable<Location>("location")
