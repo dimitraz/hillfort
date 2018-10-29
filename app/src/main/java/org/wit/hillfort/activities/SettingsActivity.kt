@@ -1,27 +1,21 @@
 package org.wit.hillfort.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.CircleTransform
-import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
 
-class SettingsActivity : AppCompatActivity(), AnkoLogger {
+class SettingsActivity : AppCompatActivity() {
   lateinit var app: MainApp
   var user = UserModel()
 

@@ -47,5 +47,7 @@
   <string name="title_settings">Update credentials</string>
   <string name="button_saveSettings">Save</string>
 
+  <!-- Profile page -->
+  <string name="title_profile">Profile statistics</string>
 </resources>
 

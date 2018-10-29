@@ -38,6 +38,9 @@ class ProfileActivity : AppCompatActivity(), AnkoLogger {
           .transform(CircleTransform()).into(profileIcon)
     }
 
+    totalHillforts.text = "Total hillforts: ${app.hillforts.findAll().size}"
+    totalVisited.text = "Total visited hillforts: ${app.hillforts.findVisited().size}"
+
     // Add listener for choose profile button
     iconLayout.setOnClickListener {
       showImagePicker(this, IMAGE_REQUEST)
