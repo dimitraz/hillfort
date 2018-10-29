@@ -49,6 +49,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       // Prefill fields
       hillfortName.setText(hillfort.name)
       hillfortDescription.setText(hillfort.description)
+      hillfortNotes.setText(hillfort.notes)
       hillfortVisited.isChecked = hillfort.visited
       if (hillfort.date != null) {
         dateVisited.text = "${hillfort.date!!.day}/${hillfort.date!!.month}/${hillfort.date!!.year}"
@@ -72,6 +73,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     btnCreate.setOnClickListener {
       hillfort.name = hillfortName.text.toString()
       hillfort.description = hillfortDescription.text.toString()
+      hillfort.notes = hillfortNotes.text.toString()
       hillfort.visited = hillfortVisited.isChecked
 
       // Update or create the hillfort object
@@ -86,7 +88,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         setResult(AppCompatActivity.RESULT_OK)
         finish()
       } else {
-        toast(R.string.name_error)
+        toast(R.string.error_invalidTitle)
       }
     }
 

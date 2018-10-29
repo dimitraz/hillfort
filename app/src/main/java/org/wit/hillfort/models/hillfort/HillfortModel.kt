@@ -12,7 +12,8 @@ data class HillfortModel(var id: Long = 0,
                          var images: MutableList<String> = ArrayList(),
                          var location: Location = Location(),
                          var visited: Boolean = false,
-                         var date: Date? = null) : Parcelable
+                         var date: Date? = null,
+                         var notes: String = "") : Parcelable
 
 
 @SuppressLint("ParcelCreator")
