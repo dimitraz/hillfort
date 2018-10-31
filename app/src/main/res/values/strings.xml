@@ -13,6 +13,8 @@
   <!-- Hillfort page -->
   <string name="text_dateVisited">Date visited:</string>
   <string name="text_chooseDate">Choose date</string>
+  <string name="text_chooseImages">Choose images</string>
+  <string name="text_chooseLocation">Choose location</string>
   <string name="text_addImage">Add Image...</string>
   <string name="text_notes">Additional notes</string>
   <string name="error_invalidTitle">Please enter a valid title</string>
@@ -50,7 +52,7 @@
   <string name="text_authFailed">Email or password is incorrect</string>
 
   <!-- Settings page -->
-  <string name="text_chooseIcon">Change image</string>
+  <string name="text_chooseIcon">Change..</string>
   <string name="title_settings">Update credentials</string>
   <string name="button_saveSettings">Save</string>
 

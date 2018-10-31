@@ -41,11 +41,11 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // Check if a hillfort has been passed in to be modified
     if (intent.hasExtra("hillfort_edit")) {
       edit = true
-      btnCreate.setText(R.string.button_saveHillfort)
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
 
+      btnCreate.setText(R.string.button_saveHillfort)
       if (hillfort.images.isNotEmpty()) {
-        chooseImage.setText(R.string.button_changeImage)
+        image.setText(R.string.button_changeImage)
       }
 
       // Prefill fields
