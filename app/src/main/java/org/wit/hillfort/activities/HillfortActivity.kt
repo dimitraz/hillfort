@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.notification_template_lines_media.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
+import org.wit.hillfort.R.id.item_cancel
+import org.wit.hillfort.R.id.item_delete
 import org.wit.hillfort.adapters.SliderAdapter
 import org.wit.hillfort.helpers.showMultiImagePicker
 import org.wit.hillfort.main.MainApp
@@ -43,6 +45,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       edit = true
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
 
+      // Update button text
       btnCreate.setText(R.string.button_saveHillfort)
       if (hillfort.images.isNotEmpty()) {
         image.setText(R.string.button_changeImage)
@@ -122,6 +125,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   // Inflate the menu
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_hillfort, menu)
+    if (edit) { menu?.findItem(item_delete)?.isVisible = true }
     return super.onCreateOptionsMenu(menu)
   }
 
