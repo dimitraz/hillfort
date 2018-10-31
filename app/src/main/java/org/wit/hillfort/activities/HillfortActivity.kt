@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_hillfort.*
+import kotlinx.android.synthetic.main.notification_template_lines_media.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.adapters.SliderAdapter
@@ -60,9 +61,14 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // Load the list of images in a pager view
     loadImages()
 
-    // Hide the pager if there are no images
-    if (hillfort.images.isEmpty()) {
-      pager.visibility = View.GONE
+    // Hide the text view if there are no images
+    if (hillfort.images.isNotEmpty()) {
+      textAddImage.visibility = View.GONE
+    }
+
+    // Start the image picker activity
+    textAddImage.setOnClickListener {
+      showMultiImagePicker(this, IMAGE_REQUEST)
     }
 
     // Start the image picker activity
@@ -169,14 +175,20 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
               val uri = clipData.getItemAt(i).uri.toString()
               hillfort.images.add(uri)
             }
-            loadImages()
           }
           // Handle single photo
           else {
             val uri = data?.data.toString()
             hillfort.images.clear()
             hillfort.images.add(uri)
-            loadImages()
+          }
+
+          // Reload the images
+          loadImages()
+
+          // Hide the text view if there are no images
+          if (hillfort.images.isNotEmpty()) {
+            textAddImage.visibility = View.GONE
           }
         }
       }

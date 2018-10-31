@@ -13,6 +13,7 @@
   <!-- Hillfort page -->
   <string name="text_dateVisited">Date visited:</string>
   <string name="text_chooseDate">Choose date</string>
+  <string name="text_addImage">Add Image...</string>
   <string name="text_notes">Additional notes</string>
   <string name="error_invalidTitle">Please enter a valid title</string>
 
