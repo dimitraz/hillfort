@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     app = application as MainApp
 
+    // Authenticate the user
     btnLogin.setOnClickListener {
       user.email = userEmail.text.toString()
       user.password = userPassword.text.toString()

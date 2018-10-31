@@ -1,24 +1,17 @@
 package org.wit.hillfort.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_settings.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
-import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
 
-class SettingsActivity : BaseActivity(), AnkoLogger {
+class SettingsActivity : BaseActivity() {
   var user = UserModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {

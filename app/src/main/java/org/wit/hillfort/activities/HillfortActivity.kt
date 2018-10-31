@@ -5,16 +5,13 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_hillfort.*
-import kotlinx.android.synthetic.main.notification_template_lines_media.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
-import org.wit.hillfort.R.id.item_cancel
 import org.wit.hillfort.R.id.item_delete
 import org.wit.hillfort.adapters.SliderAdapter
 import org.wit.hillfort.helpers.showMultiImagePicker
@@ -26,11 +23,10 @@ import org.wit.hillfort.models.hillfort.Location
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
-  lateinit var adapter: PagerAdapter
   var hillfort = HillfortModel()
-  var edit = false
-  val IMAGE_REQUEST = 1
-  val LOCATION_REQUEST = 2
+  private var edit = false
+  private val IMAGE_REQUEST = 1
+  private val LOCATION_REQUEST = 2
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -125,7 +121,9 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   // Inflate the menu
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_hillfort, menu)
-    if (edit) { menu?.findItem(item_delete)?.isVisible = true }
+    if (edit) {
+      menu?.findItem(item_delete)?.isVisible = true
+    }
     return super.onCreateOptionsMenu(menu)
   }
 
@@ -167,7 +165,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
     when (requestCode) {
-    // Recover image when picker activity finishes
+      // Recover image when picker activity finishes
       IMAGE_REQUEST -> {
         if (data != null) {
           val clipData = data.clipData
@@ -196,7 +194,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
           }
         }
       }
-    // Recover location when map activity finishes
+      // Recover location when map activity finishes
       LOCATION_REQUEST -> {
         if (data != null) {
           hillfort.location = data.extras.getParcelable<Location>("location")
