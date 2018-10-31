@@ -12,7 +12,7 @@ import org.wit.hillfort.helpers.write
 import java.util.*
 import kotlin.collections.ArrayList
 
-val JSON_FILE = "hillforts.json"
+const val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<ArrayList<HillfortModel>>() {}.type
 
@@ -44,7 +44,6 @@ class HillfortJsonStore: HillfortStore, AnkoLogger {
   override fun create(hillfort: HillfortModel) {
     hillfort.id = generateRandomId()
     hillfort.userId = userId
-    hillfort.location = Location(52.245696, -7.139102, 15f)
     hillforts.add(hillfort)
     serialize()
   }

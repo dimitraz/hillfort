@@ -77,6 +77,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     // Start the map activity
     chooseLocation.setOnClickListener {
+      hillfort.location = Location(52.245696, -7.139102, 15f)
       startActivityForResult(intentFor<MapsActivity>().putExtra("location", hillfort.location), LOCATION_REQUEST)
     }
 
