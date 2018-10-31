@@ -10,6 +10,7 @@ import org.wit.hillfort.helpers.exists
 import org.wit.hillfort.helpers.read
 import org.wit.hillfort.helpers.write
 import java.util.*
+import kotlin.collections.ArrayList
 
 val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
@@ -20,11 +21,13 @@ fun generateRandomId(): Long {
 }
 
 class HillfortJsonStore: HillfortStore, AnkoLogger {
+  private val userId: Long
   val context: Context
   var hillforts = mutableListOf<HillfortModel>()
 
-  constructor (context: Context) {
+  constructor (context: Context, userId: Long) {
     this.context = context
+    this.userId = userId
     if (exists(context, JSON_FILE)) {
       deserialize()
     }
@@ -34,8 +37,13 @@ class HillfortJsonStore: HillfortStore, AnkoLogger {
     return hillforts
   }
 
+  override fun findVisited(): List<HillfortModel> {
+    return hillforts.filter { h -> h.visited }
+  }
+
   override fun create(hillfort: HillfortModel) {
     hillfort.id = generateRandomId()
+    hillfort.userId = userId
     hillfort.location = Location(52.245696, -7.139102, 15f)
     hillforts.add(hillfort)
     serialize()
@@ -45,11 +53,14 @@ class HillfortJsonStore: HillfortStore, AnkoLogger {
     var foundHillfort: HillfortModel? = hillforts.find { h -> h.id == hillfort.id }
 
     if (foundHillfort != null) {
+      foundHillfort.userId = hillfort.userId
       foundHillfort.name = hillfort.name
       foundHillfort.description = hillfort.description
       foundHillfort.images = hillfort.images
       foundHillfort.location = hillfort.location
       foundHillfort.visited = hillfort.visited
+      foundHillfort.date = hillfort.date
+      foundHillfort.notes = hillfort.notes
     }
 
     serialize()
@@ -71,6 +82,7 @@ class HillfortJsonStore: HillfortStore, AnkoLogger {
 
   private fun deserialize() {
     val jsonString = read(context, JSON_FILE)
-    hillforts = Gson().fromJson(jsonString, listType)
+    val allHillforts: List<HillfortModel> = Gson().fromJson(jsonString, listType)
+    hillforts = allHillforts.filter { h -> h.userId == userId }.toMutableList()
   }
 }

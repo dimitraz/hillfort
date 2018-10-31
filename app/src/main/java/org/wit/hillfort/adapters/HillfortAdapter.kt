@@ -28,7 +28,7 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
       itemView.hillfortName.text = hillfort.name
       itemView.hillfortDescription.text = hillfort.description
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
-      itemView.setOnLongClickListener { listener.onHillfortLongClick(hillfort) }
+      // itemView.setOnLongClickListener { listener.onHillfortLongClick(hillfort) }
 
       if (hillfort.images.isNotEmpty()) {
         Picasso.get().load(hillfort.images.get(0))
@@ -40,5 +40,5 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
 
 interface HillfortListener {
   fun onHillfortClick(hillfort: HillfortModel)
-  fun onHillfortLongClick(hillfort: HillfortModel): Boolean
+  // fun onHillfortLongClick(hillfort: HillfortModel): Boolean
 }

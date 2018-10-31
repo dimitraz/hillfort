@@ -16,6 +16,10 @@ class HillfortMemStore: HillfortStore, AnkoLogger {
    return hillforts
   }
 
+  override fun findVisited(): List<HillfortModel> {
+    return hillforts.filter { h -> h.visited }
+  }
+
   override fun create(hillfort: HillfortModel) {
     hillfort.id = getId()
     hillfort.location = Location(52.245696, -7.139102, 15f)

@@ -1,20 +1,5 @@
 <resources>
   <string name="app_name">Hillfort</string>
-  <string name="button_saveHillfort">Save Hillfort</string>
-  <string name="button_createHillfort">Add Hillfort</string>
-  <string name="name_error">Please enter a valid title</string>
-
-  <string name="title">Delete Hillfort</string>
-  <string name="message">Do you really want to delete this hillfort?</string>
-  <string name="ok">Delete</string>
-  <string name="cancel">Cancel</string>
-
-  <string name="button_addImage">Add Image</string>
-  <string name="button_changeImagee">Change Image</string>
-  <string name="select_image">Select Image</string>
-
-  <string name="button_location">Set Location</string>
-  <string name="title_activity_maps">Map</string>
 
   <!-- Menus -->
   <string name="menu_deleteHillfort">Delete</string>
@@ -24,6 +9,27 @@
   <string name="menu_settings">Settings</string>
   <string name="menu_logout">Log out</string>
   <string name="menu_profile">Profile</string>
+
+  <!-- Hillfort page -->
+  <string name="text_dateVisited">Date visited:</string>
+  <string name="text_chooseDate">Choose date</string>
+  <string name="text_notes">Additional notes</string>
+  <string name="error_invalidTitle">Please enter a valid title</string>
+
+  <string name="title">Delete Hillfort</string>
+  <string name="message">Do you really want to delete this hillfort?</string>
+  <string name="ok">Delete</string>
+  <string name="cancel">Cancel</string>
+
+  <string name="button_saveHillfort">Save Hillfort</string>
+  <string name="button_createHillfort">Add Hillfort</string>
+  <string name="button_addImage">Add Image</string>
+  <string name="button_changeImage">Change Image</string>
+  <string name="button_location">Set Location</string>
+  <string name="select_image">Select Image</string>
+
+  <!-- Map activity -->
+  <string name="title_activity_maps">Map</string>
 
   <!-- Splash Screen -->
   <string name="loader_text">Hillfort</string>
@@ -47,5 +53,16 @@
   <string name="title_settings">Update credentials</string>
   <string name="button_saveSettings">Save</string>
 
+  <!-- Profile page -->
+  <string name="title_profile">Profile statistics</string>
+  <string name="title_activity_main">MainActivity</string>
+
+  <!-- Navigation drawer -->
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="nav_header_title">Hillfort</string>
+  <string name="nav_header_subtitle">android.studio@android.com</string>
+  <string name="nav_header_desc">Navigation header</string>
+  <string name="action_settings">Settings</string>
 </resources>
 

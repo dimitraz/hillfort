@@ -1,11 +1,10 @@
 package org.wit.hillfort.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -13,26 +12,21 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.CircleTransform
-import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
 
-class SettingsActivity : AppCompatActivity(), AnkoLogger {
-  lateinit var app: MainApp
+class SettingsActivity : BaseActivity(), AnkoLogger {
   var user = UserModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_settings)
-    toolbarSettings.title = title
-    setSupportActionBar(toolbarSettings)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    app = application as MainApp
+    val contentView = layoutInflater.inflate(R.layout.activity_settings, null, false)
+    drawer_layout.addView(contentView, 0)
 
+    // Get logged in user
     user = app.currentUser!!
 
     // Prefill user credentials
@@ -64,22 +58,7 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger {
       toast("Saved")
       app.users.update(user)
     }
-  }
 
-  // Inflate the menu
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.menu_settings, menu)
-    return super.onCreateOptionsMenu(menu)
-  }
-
-  // Menu item selected
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    when (item?.itemId) {
-      R.id.item_logout -> {
-        app.currentUser = null
-        startActivityForResult(intentFor<LandingActivity>(), 0)
-      }
-    }
-    return super.onOptionsItemSelected(item)
+    // To do: Log out button
   }
 }

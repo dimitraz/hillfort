@@ -22,7 +22,7 @@ fun showImagePicker(parent: Activity, id: Int) {
 
 fun showMultiImagePicker(parent: Activity, id: Int) {
   val intent = Intent()
-  intent.type = "profile/*"
+  intent.type = "image/*"
   intent.action = Intent.ACTION_OPEN_DOCUMENT
   intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
   intent.addCategory(Intent.CATEGORY_OPENABLE)

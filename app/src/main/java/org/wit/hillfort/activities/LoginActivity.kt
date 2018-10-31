@@ -8,6 +8,7 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.models.hillfort.HillfortJsonStore
 import org.wit.hillfort.models.user.UserModel
 
 class LoginActivity : AppCompatActivity() {
@@ -30,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val foundUser = app.users.authenticateUser(user.email, user.password)
         if (foundUser != null) {
           app.currentUser = foundUser
+          app.hillforts = HillfortJsonStore(applicationContext, foundUser.id)
           startActivityForResult(intentFor<HillfortListActivity>(), 0)
         } else {
           toast(R.string.text_authFailed)
