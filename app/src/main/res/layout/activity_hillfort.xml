@@ -81,7 +81,6 @@
             android:id="@+id/hillfortDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:hint="Description"
             android:inputType="text"
             android:maxLength="25"
@@ -89,12 +88,22 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
+          <EditText
+            android:id="@+id/hillfortNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="@string/text_notes"
+            android:inputType="textMultiLine"
+            android:textSize="16sp" />
+
           <TextView
             android:id="@+id/hillfortTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:text="Details"
             android:textSize="25dp" />
 
@@ -103,7 +112,7 @@
             android:id="@+id/chooseDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp">
+            android:layout_marginVertical="10dp">
 
             <ImageView
               android:id="@+id/dateIcon"
@@ -127,7 +136,7 @@
             android:id="@+id/chooseImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="10dp">
 
             <ImageView
               android:id="@+id/imageIcon"
@@ -178,21 +187,11 @@
             android:text="Visited"
             android:textSize="16sp" />
 
-          <EditText
-            android:id="@+id/hillfortNotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:hint="@string/text_notes"
-            android:inputType="textMultiLine" />
-
           <Button
             android:id="@+id/btnCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="28dp"
             android:background="@color/colorAccent"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"

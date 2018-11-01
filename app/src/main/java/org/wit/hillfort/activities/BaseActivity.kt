@@ -23,6 +23,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_base)
     setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
     app = application as MainApp
 
     // Toggle nav drawer

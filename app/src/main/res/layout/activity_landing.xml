@@ -13,7 +13,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:scaleType="centerCrop"
-      android:src="@drawable/image" />
+      android:src="@drawable/background" />
 
     <ScrollView
       android:layout_width="match_parent"
@@ -27,11 +27,20 @@
         android:orientation="vertical"
         android:paddingHorizontal="10dp">
 
+
+        <ImageView
+          android:id="@+id/logo"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_gravity="center"
+          android:layout_marginBottom="5dp"
+          android:src="@drawable/hillfort_logo" />
+
         <TextView
           android:id="@+id/textTitle"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="16dp"
+          android:layout_marginBottom="50dp"
           android:shadowColor="#000"
           android:shadowRadius="10"
           android:text="@string/app_name"
@@ -68,6 +77,7 @@
           android:textStyle="bold" />
 
       </LinearLayout>
+
     </ScrollView>
 
   </RelativeLayout>
