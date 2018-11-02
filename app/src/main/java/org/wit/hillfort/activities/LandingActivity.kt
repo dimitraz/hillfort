@@ -8,6 +8,7 @@ import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 
 class LandingActivity: AppCompatActivity() {
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_landing)
@@ -28,4 +29,5 @@ class LandingActivity: AppCompatActivity() {
     menuInflater.inflate(R.menu.menu_plain, menu)
     return super.onCreateOptionsMenu(menu)
   }
+
 }

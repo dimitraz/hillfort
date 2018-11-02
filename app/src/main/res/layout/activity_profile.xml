@@ -46,17 +46,19 @@
           android:layout_height="80dp"
           android:layout_alignParentLeft="true"
           android:layout_alignParentTop="true"
-          android:layout_marginRight="16dp"
+          android:layout_marginRight="20dp"
           android:background="@drawable/circle" />
 
         <TextView
           android:id="@+id/chooseIcon"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignParentTop="true"
+          android:layout_marginTop="3dp"
           android:paddingRight="20dp"
           android:text="@string/text_chooseIcon"
-          android:textAlignment="center" />
+          android:textAlignment="center"
+          android:textSize="11sp" />
 
       </LinearLayout>
 
@@ -75,7 +77,6 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/displayProfile"
       android:orientation="vertical"
-      android:paddingTop="15dp"
       android:paddingHorizontal="30dp">
 
       <TextView

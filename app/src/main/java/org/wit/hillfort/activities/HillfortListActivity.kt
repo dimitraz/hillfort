@@ -3,14 +3,12 @@ package org.wit.hillfort.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import kotlinx.android.synthetic.main.activity_base.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.adapters.HillfortAdapter
 import org.wit.hillfort.adapters.HillfortListener
-import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.hillfort.HillfortModel
 
 
@@ -35,7 +33,7 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
   }
 
   // Show hillforts in recyler view
-  fun showHillforts (hillforts: List<HillfortModel>) {
+  private fun showHillforts (hillforts: List<HillfortModel>) {
     recyclerView.adapter = HillfortAdapter(hillforts, this)
     recyclerView.adapter?.notifyDataSetChanged()
   }

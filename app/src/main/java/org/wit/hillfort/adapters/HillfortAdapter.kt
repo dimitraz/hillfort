@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.hillfort.R
 import org.wit.hillfort.models.hillfort.HillfortModel
+
 
 class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
                                   private val listener: HillfortListener) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
@@ -28,11 +30,22 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
       itemView.hillfortName.text = hillfort.name
       itemView.hillfortDescription.text = hillfort.description
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
-      // itemView.setOnLongClickListener { listener.onHillfortLongClick(hillfort) }
 
+      // Load the image if one exists
       if (hillfort.images.isNotEmpty()) {
-        Picasso.get().load(hillfort.images.get(0))
-            .resize(100, 100).centerCrop().into(itemView.hillfortIcon)
+        itemView.hillfortIcon.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+          override fun onGlobalLayout() {
+            // Only call once
+            itemView.hillfortIcon.viewTreeObserver
+                .removeOnGlobalLayoutListener(this)
+
+            // Load image into image view
+            Picasso.get()
+                .load(hillfort.images.get(0))
+                .resize(itemView.hillfortIcon.measuredWidth, itemView.hillfortIcon.measuredHeight)
+                .centerCrop().into(itemView.hillfortIcon)
+          }
+        })
       }
     }
   }
@@ -40,5 +53,4 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
 
 interface HillfortListener {
   fun onHillfortClick(hillfort: HillfortModel)
-  // fun onHillfortLongClick(hillfort: HillfortModel): Boolean
 }

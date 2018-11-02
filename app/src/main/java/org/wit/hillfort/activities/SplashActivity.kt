@@ -8,9 +8,9 @@ import org.wit.hillfort.R
 
 class SplashActivity : AppCompatActivity() {
   private lateinit var delayHandler: Handler
-  private val SPLASH_DELAY: Long = 1000 //3 seconds
+  private val SPLASH_DELAY: Long = 1000
 
-  internal val mRunnable: Runnable = Runnable {
+  private val mRunnable: Runnable = Runnable {
     if (!isFinishing) {
       startActivity(intentFor<LandingActivity>())
       finish()

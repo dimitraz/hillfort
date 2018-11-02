@@ -2,25 +2,18 @@ package org.wit.hillfort.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_profile.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.helpers.showImagePicker
-import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 
 
-class ProfileActivity : BaseActivity(), AnkoLogger {
+class ProfileActivity : BaseActivity() {
   var user = UserModel()
-  val IMAGE_REQUEST = 1
+  private val IMAGE_REQUEST = 1
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

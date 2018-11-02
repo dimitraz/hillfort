@@ -23,13 +23,16 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_base)
     setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
     app = application as MainApp
 
+    // Toggle nav drawer
     val toggle = ActionBarDrawerToggle(
         this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
+    // Prefill user profile info
     if (app.currentUser != null) {
       val nav = nav_view.getHeaderView(0)
       nav.textView.text = "${app.currentUser?.name} ${app.currentUser?.surname}"
@@ -57,11 +60,13 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    return when (item.itemId) {
-      R.id.action_settings -> true
-      else -> super.onOptionsItemSelected(item)
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item?.itemId) {
+      R.id.action_settings -> {
+        startActivityForResult(intentFor<SettingsActivity>(), 0)
+      }
     }
+    return super.onOptionsItemSelected(item)
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {

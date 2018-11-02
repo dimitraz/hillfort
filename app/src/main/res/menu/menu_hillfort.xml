@@ -9,7 +9,10 @@
 
   <item
     android:id="@+id/item_delete"
-    android:icon="@android:drawable/ic_menu_delete"
+    android:visible="false"
+    android:icon="@drawable/trash"
+    
     android:title="@string/menu_deleteHillfort"
     app:showAsAction="always" />
+
 </menu>
