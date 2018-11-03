@@ -44,7 +44,7 @@ class SettingsActivity : BaseActivity() {
       }
       if (password.isNotEmpty() && validatePassword(password)) {
         user.password = BCrypt.hashpw(password, BCrypt.gensalt())
-      } else {
+      } else if (password.isNotEmpty() && !validatePassword(password)){
         toast("Invalid password")
       }
 

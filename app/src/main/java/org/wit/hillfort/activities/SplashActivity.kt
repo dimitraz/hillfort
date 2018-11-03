@@ -8,7 +8,7 @@ import org.wit.hillfort.R
 
 class SplashActivity : AppCompatActivity() {
   private lateinit var delayHandler: Handler
-  private val SPLASH_DELAY: Long = 1000
+  private val SPLASH_DELAY: Long = 2000
 
   private val mRunnable: Runnable = Runnable {
     if (!isFinishing) {
