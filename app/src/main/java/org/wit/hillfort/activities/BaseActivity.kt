@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.drawer_appbar.*
@@ -23,26 +24,26 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_base)
     setSupportActionBar(toolbar)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
     app = application as MainApp
 
     // Toggle nav drawer
-    val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+    val toggle = object : ActionBarDrawerToggle(
+        this, drawer_layout,
+        toolbar,
+        R.string.navigation_drawer_open,
+        R.string.navigation_drawer_close
+    ){
+      override fun onDrawerOpened(drawerView: View){
+        updateHeader()
+        super.onDrawerOpened(drawerView)
+      }
+    }
+
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()
 
     // Prefill user profile info
-    if (app.currentUser != null) {
-      val nav = nav_view.getHeaderView(0)
-      nav.textView.text = "${app.currentUser?.name} ${app.currentUser?.surname}"
-
-      if (app.currentUser?.profileImage?.isNotEmpty()!!) {
-        Picasso.get().load(app.currentUser?.profileImage)
-            .transform(CircleTransform())
-            .resize(200, 200).centerCrop().into(nav.imageView)
-      }
-    }
+    updateHeader()
 
     nav_view.setNavigationItemSelectedListener(this)
   }
@@ -88,5 +89,19 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     drawer_layout.closeDrawer(GravityCompat.START)
     return true
+  }
+
+  // Prefill user profile info
+  private fun updateHeader() {
+    if (app.currentUser != null) {
+      val nav = nav_view.getHeaderView(0)
+      nav.textView.text = "${app.currentUser?.name} ${app.currentUser?.surname}"
+
+      if (app.currentUser?.profileImage?.isNotEmpty()!!) {
+        Picasso.get().load(app.currentUser?.profileImage)
+            .transform(CircleTransform())
+            .resize(150, 150).centerCrop().into(nav.imageView)
+      }
+    }
   }
 }
