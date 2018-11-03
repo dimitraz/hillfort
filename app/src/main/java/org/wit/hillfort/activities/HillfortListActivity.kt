@@ -21,10 +21,6 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     loadHillforts()
-
-    btnCreate.setOnClickListener {
-      startActivityForResult(intentFor<HillfortActivity>(), 0)
-    }
   }
 
   // Load hillforts
@@ -34,7 +30,7 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
 
   // Show hillforts in recyler view
   private fun showHillforts (hillforts: List<HillfortModel>) {
-    recyclerView.adapter = HillfortAdapter(hillforts, this)
+    recyclerView.adapter = HillfortAdapter(this, hillforts, this)
     recyclerView.adapter?.notifyDataSetChanged()
   }
 
