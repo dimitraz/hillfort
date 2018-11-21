@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.card_button.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
-import org.wit.hillfort.activities.HillfortActivity
+import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.models.hillfort.HillfortModel
 
 
@@ -35,7 +35,7 @@ class HillfortAdapter constructor(private val context: Context,
     if (position === hillforts.size) {
       holder.itemView.btnCreate.setOnClickListener {
         val context = context as Activity
-        context.startActivityForResult(context.intentFor<HillfortActivity>(), 0)
+        context.startActivityForResult(context.intentFor<HillfortView>(), 0)
       }
     } else {
       val hillfort = hillforts[holder.adapterPosition]

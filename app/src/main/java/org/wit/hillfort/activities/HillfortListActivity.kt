@@ -10,6 +10,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.adapters.HillfortAdapter
 import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.models.hillfort.HillfortModel
+import org.wit.hillfort.views.hillfort.HillfortView
 
 
 class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
@@ -36,7 +37,7 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
 
   // Add listener for when a hillfort card is pressed
   override fun onHillfortClick(hillfort: HillfortModel) {
-    startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
+    startActivityForResult(intentFor<HillfortView>().putExtra("hillfort_edit", hillfort), 0)
   }
 
   // Refresh the list when something changes
