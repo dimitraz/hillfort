@@ -31,7 +31,7 @@
       android:name=".views.signup.SignupView"
       android:parentActivityName=".activities.LandingActivity" />
     <activity
-      android:name=".activities.LoginActivity"
+      android:name=".views.login.LoginView"
       android:parentActivityName=".activities.LandingActivity" />
     <activity android:name=".activities.HillfortListActivity" />
     <activity
