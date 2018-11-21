@@ -4,7 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import org.jetbrains.anko.intentFor
-import org.wit.hillfort.activities.MapsActivity
+import org.wit.hillfort.views.editLocation.EditLocationView
 import org.wit.hillfort.helpers.showMultiImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.hillfort.Date
@@ -59,7 +59,7 @@ class HillfortPresenter(val view: HillfortView) {
     if (hillfort.location.zoom == 0f) {
       hillfort.location = Location(52.245696, -7.139102, 15f)
     }
-    view.startActivityForResult(view.intentFor<MapsActivity>().putExtra("location", hillfort.location), LOCATION_REQUEST)
+    view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", hillfort.location), LOCATION_REQUEST)
   }
 
   fun doSetDate() {

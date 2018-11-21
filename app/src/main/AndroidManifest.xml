@@ -49,7 +49,7 @@
       android:value="{GOOGLE_API_KEY}" />
 
     <activity
-      android:name=".activities.MapsActivity"
+      android:name=".views.editLocation.EditLocationView"
       android:label="@string/title_activity_maps" />
     <activity
       android:name=".activities.BaseActivity"
