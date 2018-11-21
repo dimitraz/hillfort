@@ -1,9 +1,6 @@
 package org.wit.hillfort.views.hillfort
 
-
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -13,13 +10,9 @@ import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.R.id.item_delete
-import org.wit.hillfort.activities.MapsActivity
+import org.wit.hillfort.R.id.item_save
 import org.wit.hillfort.adapters.SliderAdapter
-import org.wit.hillfort.helpers.showMultiImagePicker
-import org.wit.hillfort.main.MainApp
-import org.wit.hillfort.models.hillfort.Date
 import org.wit.hillfort.models.hillfort.HillfortModel
-import org.wit.hillfort.models.hillfort.Location
 
 
 class HillfortView : AppCompatActivity(), AnkoLogger {
@@ -49,20 +42,6 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
       presenter.doSetLocation()
     }
 
-    // Update or create the hillfort object
-    btnCreate.setOnClickListener {
-      var name = hillfortName.text.toString()
-      if (name.isNotEmpty()) {
-        presenter.doAddOrSave(
-            hillfortName.text.toString(),
-            hillfortDescription.text.toString(),
-            hillfortNotes.text.toString(),
-            hillfortVisited.isChecked)
-      } else {
-        toast(R.string.error_invalidTitle)
-      }
-    }
-
     // Calendar date picker
     chooseDate.setOnClickListener {
       presenter.doSetDate()
@@ -72,9 +51,10 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
   // Inflate the menu
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_hillfort, menu)
-//    if (edit) {
-//      menu?.findItem(item_delete)?.isVisible = true
-//    }
+    if (presenter.edit) {
+      menu?.findItem(item_delete)?.isVisible = true
+      menu?.findItem(item_save)?.isVisible = true
+    }
     return super.onCreateOptionsMenu(menu)
   }
 
@@ -82,6 +62,19 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.item_cancel -> presenter.doCancel()
+      R.id.item_save -> {
+        var name = hillfortName.text.toString()
+
+        if (name.isNotEmpty()) {
+          presenter.doAddOrSave(
+              hillfortName.text.toString(),
+              hillfortDescription.text.toString(),
+              hillfortNotes.text.toString(),
+              hillfortVisited.isChecked)
+        } else {
+          toast(R.string.error_invalidTitle)
+        }
+      }
       R.id.item_delete -> {
         alert(R.string.message, R.string.title) {
           positiveButton(R.string.ok) {
@@ -110,7 +103,6 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
 
   fun showHillfort(hillfort: HillfortModel) {
     // Prefill fields
-    btnCreate.setText(R.string.button_saveHillfort)
     hillfortName.setText(hillfort.name)
     hillfortDescription.setText(hillfort.description)
     hillfortNotes.setText(hillfort.notes)

@@ -17,7 +17,7 @@ class HillfortPresenter(val view: HillfortView) {
 
   var hillfort = HillfortModel()
   var app: MainApp = view.application as MainApp
-  private var edit = false
+  var edit = false
 
   init {
     if (view.intent.hasExtra("hillfort_edit")) {

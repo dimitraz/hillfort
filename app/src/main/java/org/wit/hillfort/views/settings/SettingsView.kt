@@ -9,9 +9,11 @@ import org.wit.hillfort.R
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.models.user.UserModel
+import org.wit.hillfort.views.settings.SettingsPresenter
 
 
 class SettingsActivity : BaseActivity() {
+  lateinit var presenter: SettingsPresenter
   var user = UserModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +21,7 @@ class SettingsActivity : BaseActivity() {
     val contentView = layoutInflater.inflate(R.layout.activity_settings, null, false)
     drawer_layout.addView(contentView, 0)
 
-    // Get logged in user
-    user = app.currentUser!!
-
-    // Prefill user credentials
-    userName.setText(user.name)
-    userSurname.setText(user.surname)
-    userEmail.setText(user.email)
+    presenter = SettingsPresenter(this)
 
     // Update user credentials
     btnSave.setOnClickListener {
@@ -53,5 +49,15 @@ class SettingsActivity : BaseActivity() {
     }
 
     // To do: Log out button
+  }
+
+  fun showUser(user: UserModel) {
+    userName.setText(user.name)
+    userSurname.setText(user.surname)
+    userEmail.setText(user.email)
+  }
+
+  fun showToast(message: String) {
+    toast(message)
   }
 }
