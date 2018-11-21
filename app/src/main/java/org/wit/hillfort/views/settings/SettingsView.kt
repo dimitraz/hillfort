@@ -1,20 +1,15 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.settings
 
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.toast
-import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.validateEmail
-import org.wit.hillfort.helpers.validatePassword
+import org.wit.hillfort.activities.BaseActivity
 import org.wit.hillfort.models.user.UserModel
-import org.wit.hillfort.views.settings.SettingsPresenter
 
-
-class SettingsActivity : BaseActivity() {
-  lateinit var presenter: SettingsPresenter
-  var user = UserModel()
+class SettingsView : BaseActivity() {
+  private lateinit var presenter: SettingsPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -29,23 +24,7 @@ class SettingsActivity : BaseActivity() {
       var surname = userSurname.text.toString()
       var email = userEmail.text.toString()
       var password = userPassword.text.toString()
-
-      // Input validation
-      if (name.isNotEmpty()) { user.name = name }
-      if (surname.isNotEmpty()) { user.surname = surname }
-      if (email.isNotEmpty() && validateEmail(email)) {
-        user.email = email
-      } else {
-        toast("Invalid email")
-      }
-      if (password.isNotEmpty() && validatePassword(password)) {
-        user.password = BCrypt.hashpw(password, BCrypt.gensalt())
-      } else if (password.isNotEmpty() && !validatePassword(password)){
-        toast("Invalid password")
-      }
-
-      toast("Saved")
-      app.users.update(user)
+      presenter.doSaveUser(name, surname, email, password)
     }
 
     // To do: Log out button

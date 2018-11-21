@@ -38,7 +38,7 @@
       android:name=".activities.ProfileActivity"
       android:parentActivityName=".activities.HillfortListActivity" />
     <activity
-      android:name=".activities.SettingsActivity"
+      android:name=".views.settings.SettingsView"
       android:parentActivityName=".activities.ProfileActivity" />
     <activity
       android:name=".views.hillfort.HillfortView"
