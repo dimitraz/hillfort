@@ -36,7 +36,7 @@ class SettingsView : BaseActivity() {
     userEmail.setText(user.email)
   }
 
-  fun showToast(message: String) {
+  fun showToast(message: Int) {
     toast(message)
   }
 }

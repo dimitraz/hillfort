@@ -1,6 +1,7 @@
 package org.wit.hillfort.views.settings
 
 import org.mindrot.jbcrypt.BCrypt
+import org.wit.hillfort.R
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
@@ -21,16 +22,16 @@ class SettingsPresenter(val view: SettingsView) {
     if (email.isNotEmpty() && validateEmail(email)) {
       user.email = email
     } else {
-      view.showToast("Invalid email")
+      view.showToast(R.string.error_userEmail)
     }
     if (password.isNotEmpty() && validatePassword(password)) {
       user.password = BCrypt.hashpw(password, BCrypt.gensalt())
     } else if (password.isNotEmpty() && !validatePassword(password)){
-      view.showToast("Invalid password")
+      view.showToast(R.string.error_userPassword)
     }
 
     view.showUser(user)
-    view.showToast("User saved")
+    view.showToast(R.string.text_userSaved)
     app.users.update(user)
   }
 }

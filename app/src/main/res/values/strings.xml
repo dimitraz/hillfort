@@ -56,6 +56,9 @@
   <string name="text_chooseIcon">Change..</string>
   <string name="title_settings">Update credentials</string>
   <string name="button_saveSettings">Save</string>
+  <string name="error_userEmail">Invalid email</string>
+  <string name="error_userPassword">Invalid password</string>
+  <string name="text_userSaved">Settings saved</string>
 
   <!-- Profile page -->
   <string name="title_profile">Profile statistics</string>
