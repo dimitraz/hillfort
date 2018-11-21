@@ -16,6 +16,7 @@ import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.views.profile.ProfileView
 import org.wit.hillfort.views.settings.SettingsView
 
 open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -77,7 +78,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         startActivityForResult(intentFor<HillfortListActivity>(), 0)
       }
       R.id.nav_profile -> {
-        startActivityForResult(intentFor<ProfileActivity>(), 0)
+        startActivityForResult(intentFor<ProfileView>(), 0)
       }
       R.id.nav_settings -> {
         startActivityForResult(intentFor<SettingsView>(), 0)
