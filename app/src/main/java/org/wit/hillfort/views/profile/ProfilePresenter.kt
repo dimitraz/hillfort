@@ -1,11 +1,7 @@
 package org.wit.hillfort.views.profile
 
 import android.content.Intent
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_profile.*
-import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.helpers.showImagePicker
-import org.wit.hillfort.helpers.showMultiImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.user.UserModel
 

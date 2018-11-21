@@ -16,6 +16,7 @@ import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.views.landing.LandingView
 import org.wit.hillfort.views.profile.ProfileView
 import org.wit.hillfort.views.settings.SettingsView
 
@@ -85,7 +86,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
       }
       R.id.nav_logout -> {
         app.currentUser = null
-        startActivityForResult(intentFor<LandingActivity>(), 0)
+        startActivityForResult(intentFor<LandingView>(), 0)
       }
     }
 

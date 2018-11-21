@@ -26,13 +26,13 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".activities.LandingActivity" />
+    <activity android:name=".views.landing.LandingView" />
     <activity
       android:name=".views.signup.SignupView"
-      android:parentActivityName=".activities.LandingActivity" />
+      android:parentActivityName=".views.landing.LandingView" />
     <activity
       android:name=".views.login.LoginView"
-      android:parentActivityName=".activities.LandingActivity" />
+      android:parentActivityName=".views.landing.LandingView" />
     <activity android:name=".activities.HillfortListActivity" />
     <activity
       android:name=".views.profile.ProfileView"
