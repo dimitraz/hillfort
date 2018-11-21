@@ -3,7 +3,7 @@ package org.wit.hillfort.views.signup
 import org.jetbrains.anko.intentFor
 import org.mindrot.jbcrypt.BCrypt
 import org.wit.hillfort.R
-import org.wit.hillfort.activities.HillfortListActivity
+import org.wit.hillfort.views.hillfortList.HillfortListView
 import org.wit.hillfort.helpers.validateEmail
 import org.wit.hillfort.helpers.validatePassword
 import org.wit.hillfort.main.MainApp
@@ -27,7 +27,7 @@ class SignupPresenter(val view: SignupView) {
         app.users.create(user)
         app.currentUser = user
         app.hillforts = HillfortJsonStore(view.applicationContext, user.id)
-        view.startActivityForResult(view.intentFor<HillfortListActivity>(), 0)
+        view.startActivityForResult(view.intentFor<HillfortListView>(), 0)
       }
     }
     else {

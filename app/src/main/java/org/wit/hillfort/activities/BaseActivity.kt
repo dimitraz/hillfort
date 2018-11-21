@@ -16,6 +16,7 @@ import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.views.hillfortList.HillfortListView
 import org.wit.hillfort.views.landing.LandingView
 import org.wit.hillfort.views.profile.ProfileView
 import org.wit.hillfort.views.settings.SettingsView
@@ -76,7 +77,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.nav_hillforts -> {
-        startActivityForResult(intentFor<HillfortListActivity>(), 0)
+        startActivityForResult(intentFor<HillfortListView>(), 0)
       }
       R.id.nav_profile -> {
         startActivityForResult(intentFor<ProfileView>(), 0)

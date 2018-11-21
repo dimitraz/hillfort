@@ -1,4 +1,4 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.hillfortList
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,17 +7,21 @@ import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import kotlinx.android.synthetic.main.activity_base.*
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
+import org.wit.hillfort.activities.BaseActivity
 import org.wit.hillfort.adapters.HillfortAdapter
 import org.wit.hillfort.adapters.HillfortListener
 import org.wit.hillfort.models.hillfort.HillfortModel
-import org.wit.hillfort.views.hillfort.HillfortView
 
 
-class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
+class HillfortListView : BaseActivity(), HillfortListener, AnkoLogger {
+  lateinit var presenter: HillfortListPresenter
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val contentView = layoutInflater.inflate(R.layout.activity_hillfort_list, null, false)
     drawer_layout.addView(contentView, 0)
+
+    presenter = HillfortListPresenter(this)
 
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
@@ -26,7 +30,7 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
 
   // Load hillforts
   private fun loadHillforts() {
-    showHillforts(app.hillforts.findAll())
+    showHillforts(presenter.getHillforts())
   }
 
   // Show hillforts in recyler view
@@ -37,7 +41,7 @@ class HillfortListActivity : BaseActivity(), HillfortListener, AnkoLogger {
 
   // Add listener for when a hillfort card is pressed
   override fun onHillfortClick(hillfort: HillfortModel) {
-    startActivityForResult(intentFor<HillfortView>().putExtra("hillfort_edit", hillfort), 0)
+    presenter.doEditHillfort(hillfort)
   }
 
   // Refresh the list when something changes

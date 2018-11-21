@@ -33,16 +33,16 @@
     <activity
       android:name=".views.login.LoginView"
       android:parentActivityName=".views.landing.LandingView" />
-    <activity android:name=".activities.HillfortListActivity" />
+    <activity android:name=".views.hillfortList.HillfortListView" />
     <activity
       android:name=".views.profile.ProfileView"
-      android:parentActivityName=".activities.HillfortListActivity" />
+      android:parentActivityName=".views.hillfortList.HillfortListView" />
     <activity
       android:name=".views.settings.SettingsView"
       android:parentActivityName=".views.profile.ProfileView" />
     <activity
       android:name=".views.hillfort.HillfortView"
-      android:parentActivityName=".activities.HillfortListActivity" />
+      android:parentActivityName=".views.hillfortList.HillfortListView" />
 
     <meta-data
       android:name="com.google.android.maps.v2.API_KEY"
