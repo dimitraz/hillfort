@@ -6,6 +6,7 @@ import android.view.Menu
 import kotlinx.android.synthetic.main.activity_landing.*
 import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
+import org.wit.hillfort.views.signup.SignupView
 
 class LandingActivity: AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class LandingActivity: AppCompatActivity() {
 
     // Start signup activity when button is pressed
     btnSignup.setOnClickListener{
-      startActivityForResult(intentFor<SignupActivity>(), 0)
+      startActivityForResult(intentFor<SignupView>(), 0)
     }
 
     // Start login activity when button is pressed
