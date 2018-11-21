@@ -5,6 +5,7 @@
   <string name="menu_deleteHillfort">Delete</string>
   <string name="menu_cancelHillfort">Cancel</string>
   <string name="menu_createHillfort">Create</string>
+  <string name="menu_saveHillfort">Save</string>
   <string name="menu_logo">Hillfort</string>
   <string name="menu_settings">Settings</string>
   <string name="menu_logout">Log out</string>
@@ -55,6 +56,9 @@
   <string name="text_chooseIcon">Change..</string>
   <string name="title_settings">Update credentials</string>
   <string name="button_saveSettings">Save</string>
+  <string name="error_userEmail">Invalid email</string>
+  <string name="error_userPassword">Invalid password</string>
+  <string name="text_userSaved">Settings saved</string>
 
   <!-- Profile page -->
   <string name="title_profile">Profile statistics</string>

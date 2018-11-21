@@ -5,6 +5,7 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
+import org.wit.hillfort.views.landing.LandingView
 
 class SplashActivity : AppCompatActivity() {
   private lateinit var delayHandler: Handler
@@ -12,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
 
   private val mRunnable: Runnable = Runnable {
     if (!isFinishing) {
-      startActivity(intentFor<LandingActivity>())
+      startActivity(intentFor<LandingView>())
       finish()
     }
   }

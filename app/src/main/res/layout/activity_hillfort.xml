@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="org.wit.hillfort.activities.HillfortActivity">
+  tools:context="org.wit.hillfort.views.hillfort.HillfortView">
 
   <RelativeLayout
     android:layout_width="match_parent"
@@ -185,19 +185,6 @@
             android:layout_marginLeft="-4dp"
             android:layout_marginTop="2dp"
             android:text="Visited"
-            android:textSize="16sp" />
-
-          <Button
-            android:id="@+id/btnCreate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:background="@color/colorAccent"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:stateListAnimator="@null"
-            android:text="@string/button_createHillfort"
-            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
         </LinearLayout>
 

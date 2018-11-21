@@ -16,6 +16,10 @@ import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.CircleTransform
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.views.hillfortList.HillfortListView
+import org.wit.hillfort.views.landing.LandingView
+import org.wit.hillfort.views.profile.ProfileView
+import org.wit.hillfort.views.settings.SettingsView
 
 open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
   lateinit var app: MainApp
@@ -64,7 +68,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.action_settings -> {
-        startActivityForResult(intentFor<SettingsActivity>(), 0)
+        startActivityForResult(intentFor<SettingsView>(), 0)
       }
     }
     return super.onOptionsItemSelected(item)
@@ -73,17 +77,17 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.nav_hillforts -> {
-        startActivityForResult(intentFor<HillfortListActivity>(), 0)
+        startActivityForResult(intentFor<HillfortListView>(), 0)
       }
       R.id.nav_profile -> {
-        startActivityForResult(intentFor<ProfileActivity>(), 0)
+        startActivityForResult(intentFor<ProfileView>(), 0)
       }
       R.id.nav_settings -> {
-        startActivityForResult(intentFor<SettingsActivity>(), 0)
+        startActivityForResult(intentFor<SettingsView>(), 0)
       }
       R.id.nav_logout -> {
         app.currentUser = null
-        startActivityForResult(intentFor<LandingActivity>(), 0)
+        startActivityForResult(intentFor<LandingView>(), 0)
       }
     }
 

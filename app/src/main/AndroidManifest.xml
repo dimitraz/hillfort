@@ -26,30 +26,30 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".activities.LandingActivity" />
+    <activity android:name=".views.landing.LandingView" />
     <activity
-      android:name=".activities.SignupActivity"
-      android:parentActivityName=".activities.LandingActivity" />
+      android:name=".views.signup.SignupView"
+      android:parentActivityName=".views.landing.LandingView" />
     <activity
-      android:name=".activities.LoginActivity"
-      android:parentActivityName=".activities.LandingActivity" />
-    <activity android:name=".activities.HillfortListActivity" />
+      android:name=".views.login.LoginView"
+      android:parentActivityName=".views.landing.LandingView" />
+    <activity android:name=".views.hillfortList.HillfortListView" />
     <activity
-      android:name=".activities.ProfileActivity"
-      android:parentActivityName=".activities.HillfortListActivity" />
+      android:name=".views.profile.ProfileView"
+      android:parentActivityName=".views.hillfortList.HillfortListView" />
     <activity
-      android:name=".activities.SettingsActivity"
-      android:parentActivityName=".activities.ProfileActivity" />
+      android:name=".views.settings.SettingsView"
+      android:parentActivityName=".views.profile.ProfileView" />
     <activity
-      android:name=".activities.HillfortActivity"
-      android:parentActivityName=".activities.HillfortListActivity" />
+      android:name=".views.hillfort.HillfortView"
+      android:parentActivityName=".views.hillfortList.HillfortListView" />
 
     <meta-data
       android:name="com.google.android.maps.v2.API_KEY"
       android:value="{GOOGLE_API_KEY}" />
 
     <activity
-      android:name=".activities.MapsActivity"
+      android:name=".views.editLocation.EditLocationView"
       android:label="@string/title_activity_maps" />
     <activity
       android:name=".activities.BaseActivity"
